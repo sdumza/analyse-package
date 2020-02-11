@@ -2,43 +2,33 @@
 # coding: utf-8
 import numpy as np
 import pandas as pd
+def dictionary_of_metrics(items):
 
-def dictionary_of_metrics(data):
-
-    mean = lambda data : sum(data)/len(data)
+    def mean(items):
+        mean = np.mean(items)
+        return mean
         
-    maximum = lambda data : max(data)
+    maximum = lambda items : max(items)
     
-    minimum = lambda data : min(data)
+    minimum = lambda items : min(items)
     
-    def mid(data):
-        data2 = sorted(data, reverse=False) 
-        n = len(data)
-        if n % 2 == 0: 
-            m1 = data2[n//2] 
-            m2 = data2[n//2 - 1] 
-            median = (m1 + m2)/2
-        else: 
-            median = data2[n//2]
+    def mid(items):
+        median = np.median(items)
+        
         return median
     
-    def stdv(data):
-        mean = sum(data)/len(data)
-        t = 0.0
-        for x in data:
-            t = t + (x - mean)**2
-        return (t/(len(data)-1))**0.5
+    def stdv(items):
+        std = np.std(items, ddof=1)
+        
+        return std
     
-    def var(data):
-        mean = sum(data)/len(data)
-        t = 0.0
-        for x in data:
-            t = t + (x - mean)**2
-        v = t/(len(data)-1)
-        return v
+    def var(items):
+        var = np.var(items, ddof=1)
+        
+        return var
     
-    met_dic = {'mean':mean(data), 'median':mid(data), 'variance':var(data),
-               'standard deviation':stdv(data), 'min':minimum(data), 'max':maximum(data)}
+    met_dic = {'mean':round(mean(items), 2), 'median':round(mid(items), 2), 'var':round(var(items), 2),
+               'std':round(stdv(items), 2), 'min':round(minimum(items), 2), 'max':round(maximum(items), 2)}
     
     return met_dic
 
@@ -89,12 +79,11 @@ def five_num_summ(data):
     fns = {'max': maximum(data), 'median': mid(data), 'min': minimum(data), 'q1': q1(data), 'q3': q3(data)}
     return fns
 
-def date_parser(list_dates):
-     dates=[]
-    for i in range(len(item)):
-        datesOnly=item[i].split()[0]
+def date_parser(items):
+    dates=[]
+    for i in range(len(items)):
+        datesOnly=items[i].split()[0]
         dates.append(datesOnly)
-
     return dates
 
 
