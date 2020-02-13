@@ -114,6 +114,7 @@ def extract_municipality_hashtags(df):
 
 def number_of_tweets_per_day(df):
     import pandas as pd
+    # Insert calculations section
     new_dataframe = (DatetimeIndex.date, col_name = 'Tweets')
     return new_dataframe
   pass
