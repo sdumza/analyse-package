@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='analyse-package',
-    version='0.1',
+    name='analyse_package',
+    version='0.2',
     packages=find_packages(exclude=['tests*']),
     license='MIT',
     description='EDSA example python package',
