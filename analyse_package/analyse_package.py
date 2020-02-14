@@ -1,34 +1,22 @@
-#!/usr/bin/env python
-# coding: utf-8
-import numpy as np
-import pandas as pd
 def dictionary_of_metrics(items):
     def mean(items):
         mean = np.mean(items)
         return mean
-
-    maximum = lambda items : max(items)
-
-    minimum = lambda items : min(items)
-
+        maximum = lambda items : max(items)
+        minimum = lambda items : min(items)
     def mid(items):
         median = np.median(items)
-
         return median
-
     def stdv(items):
         std = np.std(items, ddof=1)
-
         return std
 
     def var(items):
         var = np.var(items, ddof=1)
-
         return var
 
     met_dic = {'mean':round(mean(items), 2), 'median':round(mid(items), 2), 'var':round(var(items), 2),
                'std':round(stdv(items), 2), 'min':round(minimum(items), 2), 'max':round(maximum(items), 2)}
-
     return met_dic
 
 def five_num_summ(data):
