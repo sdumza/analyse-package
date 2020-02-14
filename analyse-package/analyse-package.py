@@ -89,7 +89,7 @@ def date_parser(items):
 
 def extract_municipality_hashtags(df):
 
-    municipality_dict = { '@CityofCTAlerts' : 'Cape Town',
+    mun_dict = { '@CityofCTAlerts' : 'Cape Town',
             '@CityPowerJhb' : 'Johannesburg',
             '@eThekwiniM' : 'eThekwini' ,
             '@EMMInfo' : 'Ekurhuleni',
@@ -98,39 +98,29 @@ def extract_municipality_hashtags(df):
             '@CityTshwane' : 'Tshwane'}
     hashes = [list(filter(lambda x: x.startswith("#"), df['Tweets'][i].split())) for i in range(len(df.index.values))]
     hashtags = pd.DataFrame([np.nan if x == [] else x for x in hashes ], columns=['hashtags']) 
-    
-    m1 = [list(filter(lambda x: x.startswith("@"), df['Tweets'][i].split())) for i in range(len(df.index.values))]
-    flat_m1 = []
-    for sublist in m1:
-        for item in sublist:
-            flat_m1.append(item)
             
-    municipality = pd.DataFrame([x if x in municipality_dict else np.nan for x in flat_m1], columns=['municipality'])
-    extracted_municipality = df.join(municipality, lsuffix='Date', rsuffix='municipality')
-    extracted_municipality_hashtags = extracted_municipality.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
-
-    return extracted_municipality_hashtags
-
-
-hashtag=[]
-municipality=[]
-for i in range(0, len(twitter_df)):
+    municipality=[]
+for i in range(0, len(df)):
     found=""
     cityFound=""
-    for handle, city in mun_dict.items():    # for name, age in dictionary.iteritems():  (for Python 2.x)
-        value=twitter_df.iloc[i][0].find(handle)
+    for handle, city in mun_dict.items():
+        value=df.iloc[i][0].find(handle)
         if value is not -1:
             cityFound=city
         else:
             cityFound=np.nan
     municipality.append(cityFound)
+    extracted_municipality = df.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
+    extracted_municipality_hashtags = extracted_municipality.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
+
+    return extracted_municipality_hashtags
 
 
 def number_of_tweets_per_day(df):
-    import pandas as pd
+    #import pandas as pd
     # Insert calculations section
-    new_dataframe = (DatetimeIndex.date, col_name = 'Tweets')
-    return new_dataframe
+    #new_dataframe = (DatetimeIndex.date, col_name = 'Tweets')
+    #return new_dataframe
   pass
 
 def word_spliter(df):
