@@ -126,9 +126,15 @@ def word_spliter(df):
   pass
 
 
-def stop_words_http_remover(df):
-
-  # Code Here
-
-  pass
+def stop_words_remover(df):
+    date_list = [dates[i].split()[0] for i in range(len(dates))]
+    tweets_list = list(df['Tweets'])
+    z = list(zip(date_list,tweets_list))
+    k = [y.lower() for x,y in z]
+    stop_words = tuple(stop_words_dict['stopwords'])
+    no_swords_list = [list(filter(lambda x: x not in stop_words, k[i].split()))
+               for i in range(len(twitter_df.index.values))]
+    no_swords_df = pd.DataFrame(np.array(no_swords_list), columns=['Without Stop Words'])
+    stop_words_remover_df = df.join(no_swords_df, lsuffix=['Date'], rsuffix=['Without Stop Words'])
+    return stop_words_remover_df
 
