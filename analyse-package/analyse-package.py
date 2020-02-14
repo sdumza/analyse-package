@@ -123,6 +123,20 @@ def extract_municipality_hashtags(df):
     return extracted_municipality_hashtags
 
 
+hashtag=[]
+municipality=[]
+for i in range(0, len(twitter_df)):
+    found=""
+    cityFound=""
+    for handle, city in mun_dict.items():    # for name, age in dictionary.iteritems():  (for Python 2.x)
+        value=twitter_df.iloc[i][0].find(handle)
+        if value is not -1:
+            cityFound=city
+        else:
+            cityFound=np.nan
+    municipality.append(cityFound)
+
+
 def number_of_tweets_per_day(df):
 
   ### Code Here
