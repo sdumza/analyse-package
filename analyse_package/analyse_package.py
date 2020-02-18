@@ -2,8 +2,8 @@ def dictionary_of_metrics(items):
     def mean(items):
         mean = np.mean(items)
         return mean
-        maximum = lambda items : max(items)
-        minimum = lambda items : min(items)
+    maximum = lambda items : max(items)
+    minimum = lambda items : min(items)
     def mid(items):
         median = np.median(items)
         return median
