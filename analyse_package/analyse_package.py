@@ -101,8 +101,8 @@ def extract_municipality_hashtags(df):
             else:
                 cityFound=np.nan
     municipality.append(cityFound)
-    extracted_municipality_hashtags = df.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
-    #extracted_municipality_hashtags = extracted_municipality.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
+    #extracted_hashtags = df.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
+    extracted_municipality_hashtags = extracted_municipality.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
 
     return extracted_municipality_hashtags
 
