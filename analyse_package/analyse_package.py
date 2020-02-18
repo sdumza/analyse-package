@@ -69,11 +69,15 @@ def five_num_summ(data):
     return fns
 
 def date_parser(items):
-    dates=[]
-    for i in range(len(items)):
-        datesOnly=items[i].split()[0]
-        dates.append(datesOnly)
-    return dates
+    """
+    function should take a list of strings as input.
+Each string in the input list is formatted as 'yyyy-mm-dd hh:mm:ss'.
+The function should return a list of strings where each element in the
+returned list contains only the date in the 'yyyy-mm-dd' format. 
+    """
+       just_dates = [i[0:10] for i in dates ]
+    return just_dates
+
 
 
 def extract_municipality_hashtags(df):
@@ -141,10 +145,6 @@ def word_spliter(df):
     df_split = df.join(d, lsuffix='Date', rsuffix='Split Tweets')
 
     return df_split
-
-  ### Code Here
-
-  pass
 
 
 def stop_words_remover(df):
