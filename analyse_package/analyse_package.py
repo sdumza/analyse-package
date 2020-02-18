@@ -87,10 +87,8 @@ def extract_municipality_hashtags(df):
             '@centlecutility' : 'Mangaung',
             '@NMBmunicipality' : 'Nelson Mandela Bay',
             '@CityTshwane' : 'Tshwane'}
-    hashes = [list(filter(lambda x: x.startswith("#"), df['Tweets'][i].split())) for i in range(len(df.index.values))]
-    hashtags = pd.DataFrame([np.nan if x == [] else x for x in hashes ], columns=['hashtags'])
 
-    municipality=[]
+    municipality1=[]
     for i in range(0, len(df)):
         found=""
         cityFound=""
@@ -100,9 +98,13 @@ def extract_municipality_hashtags(df):
                 cityFound=city
             else:
                 cityFound=np.nan
-    municipality.append(cityFound)
-    #extracted_hashtags = df.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
-    extracted_municipality_hashtags = municipality.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
+        municipality1.append(cityFound)
+
+    municipality = pd.DataFrame(municipality1, columns=['municipality'])
+    municipality2 = df.join(municipality, lsuffix='Date', rsuffix='municipality')
+    hashes = [list(filter(lambda x: x.startswith("#"), df['Tweets'][i].split())) for i in range(len(df.index.values))]
+    hashtags = pd.DataFrame([np.nan if x == [] else x for x in hashes ], columns=['hashtags'])
+    extracted_municipality_hashtags = municipality2.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
 
     return extracted_municipality_hashtags
 
