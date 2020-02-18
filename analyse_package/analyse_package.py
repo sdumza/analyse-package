@@ -131,6 +131,13 @@ def number_of_tweets_per_day(df):
 
 def word_spliter(df):
 
+
+    Split_tweets = [x.lower().split() for x in df['Tweets']]
+    d = pd.DataFrame(np.array(Split_tweets), columns=['Split Tweets'])
+    df_split = df.join(d, lsuffix='Date', rsuffix='Split Tweets')
+
+    return df_split
+
   ### Code Here
 
   pass
