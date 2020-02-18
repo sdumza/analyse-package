@@ -123,7 +123,8 @@ def extract_municipality_hashtags(df):
 
 
 def number_of_tweets_per_day(df):
-    """ The function takes a pandas dataframe as inpit
+
+   """ The function takes a pandas dataframe as inpit
         The function returns a new dataframe , grouped by day, with the numbers of tweets for that day
         Get index of the new dataframe should be named "Date", and the column of the new dataframe should be 'tweets', corresponding to the date and number of 'Tweets, corresponding to the date and number of tweets, respectively.
         The date and number be formated as yyyy-mm-dd, and should be a datetime object """
