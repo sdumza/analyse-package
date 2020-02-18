@@ -1,4 +1,10 @@
 def dictionary_of_metrics(items):
+    """
+    The function should allow list as input.
+    The function will return dictionary_of_metrics as a dict.
+    Standard deviation and variance must be unbiased.
+    All the values of dictionary_of_metrics must be rounded to 2 decimals.
+    """
     import numpy as np
     def mean(items):
         mean = np.mean(items)
@@ -73,7 +79,7 @@ def date_parser(items):
     function should take a list of strings as input.
 Each string in the input list is formatted as 'yyyy-mm-dd hh:mm:ss'.
 The function should return a list of strings where each element in the
-returned list contains only the date in the 'yyyy-mm-dd' format. 
+returned list contains only the date in the 'yyyy-mm-dd' format.
     """
        just_dates = [i[0:10] for i in dates ]
     return just_dates
