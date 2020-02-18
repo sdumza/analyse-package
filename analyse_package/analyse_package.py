@@ -70,17 +70,19 @@ def five_num_summ(data):
 
 def date_parser(items):
     only_dates = [i[0:10] for i in dates ]
-    return only_dates 
+    return only_dates
 
 
 
 def extract_municipality_hashtags(df):
-    import numpy as np
-    import pandas as pd
+
 """
-    The function should take pandas as a dataframe.
-    Extract municipality from a tweet using dictionaries.
-    Extract hashtags from a tweet using dictionaries.
+    The function takes in a dataframe and returns a modified dataframe that
+    includes two new  columns that contain information about the municipality
+    and hashtag of the tweet.
+
+
+
 
     Args:
         df (DataFrame): pandas data DataFrame
@@ -88,9 +90,12 @@ def extract_municipality_hashtags(df):
 
 
     Return:
-        DataFrame: with information about municipality and hashtags from each tweet.
+        DataFrame: with information about municipality and hashtags
+        from each tweet.
 
 """
+    import numpy as np
+    import pandas as pd
     mun_dict = { '@CityofCTAlerts' : 'Cape Town',
             '@CityPowerJhb' : 'Johannesburg',
             '@eThekwiniM' : 'eThekwini' ,
