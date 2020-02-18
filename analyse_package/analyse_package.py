@@ -79,7 +79,7 @@ def date_parser(items):
 def extract_municipality_hashtags(df):
     import numpy as np
     import pandas as pd
-    
+
     mun_dict = { '@CityofCTAlerts' : 'Cape Town',
             '@CityPowerJhb' : 'Johannesburg',
             '@eThekwiniM' : 'eThekwini' ,
@@ -101,8 +101,8 @@ def extract_municipality_hashtags(df):
             else:
                 cityFound=np.nan
     municipality.append(cityFound)
-    extracted_municipality = df.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
-    extracted_municipality_hashtags = extracted_municipality.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
+    extracted_municipality_hashtags = df.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
+    #extracted_municipality_hashtags = extracted_municipality.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
 
     return extracted_municipality_hashtags
 
