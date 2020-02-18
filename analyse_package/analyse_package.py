@@ -1,4 +1,5 @@
 def dictionary_of_metrics(items):
+    import numpy as np
     def mean(items):
         mean = np.mean(items)
         return mean
@@ -20,6 +21,7 @@ def dictionary_of_metrics(items):
     return met_dic
 
 def five_num_summ(data):
+    import numpy as np
     def q1(data):
         data2 = sorted(data, reverse=False)
         n = len(data2)
@@ -75,7 +77,9 @@ def date_parser(items):
 
 
 def extract_municipality_hashtags(df):
-
+    import numpy as np
+    import pandas as pd
+    
     mun_dict = { '@CityofCTAlerts' : 'Cape Town',
             '@CityPowerJhb' : 'Johannesburg',
             '@eThekwiniM' : 'eThekwini' ,
@@ -118,6 +122,9 @@ def word_spliter(df):
 
 
 def stop_words_remover(df):
+    import numpy as np
+    import pandas as pd
+
     date_list = [dates[i].split()[0] for i in range(len(dates))]
     tweets_list = list(df['Tweets'])
     z = list(zip(date_list,tweets_list))
