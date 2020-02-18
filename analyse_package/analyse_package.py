@@ -69,20 +69,20 @@ def five_num_summ(data):
     return fns
 
 def date_parser(items):
-    only_dates = [i[0:10] for i in dates ]
-    return only_dates
-
+    dates=[]
+    for i in range(len(items)):
+        datesOnly=items[i].split()[0]
+        dates.append(datesOnly)
+    return dates
 
 
 def extract_municipality_hashtags(df):
-
+    import numpy as np
+    import pandas as pd
 """
-    The function takes in a dataframe and returns a modified dataframe that
-    includes two new  columns that contain information about the municipality
-    and hashtag of the tweet.
-
-
-
+    The function should take pandas as a dataframe.
+    Extract municipality from a tweet using dictionaries.
+    Extract hashtags from a tweet using dictionaries.
 
     Args:
         df (DataFrame): pandas data DataFrame
@@ -90,12 +90,9 @@ def extract_municipality_hashtags(df):
 
 
     Return:
-        DataFrame: with information about municipality and hashtags
-        from each tweet.
+        DataFrame: with information about municipality and hashtags from each tweet.
 
 """
-    import numpy as np
-    import pandas as pd
     mun_dict = { '@CityofCTAlerts' : 'Cape Town',
             '@CityPowerJhb' : 'Johannesburg',
             '@eThekwiniM' : 'eThekwini' ,
@@ -126,10 +123,11 @@ def extract_municipality_hashtags(df):
 
 
 def number_of_tweets_per_day(df):
-    df1=df['Date'].str.split(expand = True)
-    df['Date'] = df1[0]
-    df=df.groupby('Date').count()
-    return df
+    #import pandas as pd
+    # Insert calculations section
+    #new_dataframe = (DatetimeIndex.date, col_name = 'Tweets')
+    #return new_dataframe
+  pass
 
 def word_spliter(df):
 
