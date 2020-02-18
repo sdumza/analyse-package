@@ -68,12 +68,9 @@ def five_num_summ(data):
     fns = {'max': maximum(data), 'median': mid(data), 'min': minimum(data), 'q1': q1(data), 'q3': q3(data)}
     return fns
 
-def date_parser(items):
-    dates=[]
-    for i in range(len(items)):
-        datesOnly=items[i].split()[0]
-        dates.append(datesOnly)
-    return dates
+def date_parser(dates):
+    only_dates = [i[0:10] for i in dates ]
+    return only_dates 
 
 
 def extract_municipality_hashtags(df):
