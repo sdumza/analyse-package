@@ -77,7 +77,6 @@ def date_parser(items):
 
 
 def extract_municipality_hashtags(df):
-    def extract_municipality_hashtags(df):
     import numpy as np
     import pandas as pd
 
