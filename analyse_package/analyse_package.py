@@ -102,7 +102,7 @@ def extract_municipality_hashtags(df):
 
     municipality = pd.DataFrame(municipality1, columns=['municipality'])
     municipality2 = df.join(municipality, lsuffix='Date', rsuffix='municipality')
-    hashes = [list(filter(lambda x: x.startswith("#"), df['Tweets'][i].split())) for i in range(len(df.index.values))]
+    hashes = [list(filter(lambda x: x.startswith("#"), df['Tweets'][i].lower().split())) for i in range(len(df.index.values))]
     hashtags = pd.DataFrame([np.nan if x == [] else x for x in hashes ], columns=['hashtags'])
     extracted_municipality_hashtags = municipality2.join(hashtags, lsuffix='municipality', rsuffix='hashtags')
 
