@@ -69,9 +69,11 @@ def five_num_summ(data):
     return fns
 
 def date_parser(items):
-    only_dates = [i[0:10] for i in dates ]
-    return only_dates 
-
+    dates=[]
+    for i in range(len(items)):
+        datesOnly=items[i].split()[0]
+        dates.append(datesOnly)
+    return dates
 
 
 def extract_municipality_hashtags(df):
@@ -121,6 +123,10 @@ def extract_municipality_hashtags(df):
 
 
 def number_of_tweets_per_day(df):
+    """ The function takes a pandas dataframe as inpit
+        The function returns a new dataframe , grouped by day, with the numbers of tweets for that day
+        Get index of the new dataframe should be named "Date", and the column of the new dataframe should be 'tweets', corresponding to the date and number of 'Tweets, corresponding to the date and number of tweets, respectively.
+        The date and number be formated as yyyy-mm-dd, and should be a datetime object """
     df1=df['Date'].str.split(expand = True)
     df['Date'] = df1[0]
     df=df.groupby('Date').count()
