@@ -130,8 +130,8 @@ to discuss what you would like to change.
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ## Authors
-Dumisani Shabalala dumisan@protonmail.com
-Kopano Monyobo kopanomonyobo@gmail.com
-Nkopane Guada labonneguada@gmail.com
-Lehlohonolo Monareng lehlohonolomonareng@yahoo.com
-Lucas Sithole lucas317sithole@gmail.com
+Dumisani Shabalala dumisan@protonmail.com\n
+Kopano Monyobo kopanomonyobo@gmail.com\n
+Nkopane Guada labonneguada@gmail.com\n
+Lehlohonolo Monareng lehlohonolomonareng@yahoo.com\n
+Lucas Sithole lucas317sithole@gmail.com\n
