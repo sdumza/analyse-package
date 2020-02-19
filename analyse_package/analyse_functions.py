@@ -1,9 +1,13 @@
 def dictionary_of_metrics(items):
     """
-    The function should allow list as input.
-    The function will return dictionary_of_metrics as a dict.
-    Standard deviation and variance must be unbiased.
-    All the values of dictionary_of_metrics must be rounded to 2 decimals.
+    Takes in a list of integers and returns a dictionary of the five number summary.
+    The function returns numerical values rounded to two decimal places.
+    Args:
+        items: list of integers
+
+    Returns:
+        dict (dictionary): a dict with keys 'max', 'median', 'min', 'q1',
+                        and 'q3' corresponding to the maximum, median, minimum, first quartile and third quartile, respectively.
     """
     import numpy as np
     def mean(items):
@@ -27,82 +31,67 @@ def dictionary_of_metrics(items):
     return met_dic
 
 def five_num_summ(data):
+    """
+    Takes in a list of integers and returns a dictionary of the five number summary.
+    The function returns numerical values rounded to two decimal places.
+    Args:
+        data (list): list of integers
+
+    Returns:
+        dict (dictionary): a dict with keys 'max', 'median', 'min', 'q1',
+                            and 'q3' corresponding to the maximum, median, minimum, first quartile and third quartile, respectively.
+    """
     import numpy as np
-    def q1(data):
-        data2 = sorted(data, reverse=False)
-        n = len(data2)
-        if n % 2 == 0:
-            l_data = data2[0:n//2]
-        else:
-            l_data = data2[0:n//2+1]
-        n2 = len(l_data)
-        if n2 % 2 == 0:
-            m1 = data2[n2//2]
-            m2 = data2[n2//2 - 1]
-            q1 = (m1 + m2)/2
-        else:
-            q1 = data2[n2//2]
+    def q1(items):
+        q1 = np.percentile(items, 25)
         return round(q1, 2)
 
-    def q3(data):
-        data3 = sorted(data, reverse=False)
-        n = len(data3)
-        l_data3 = data3[n//2:]
-        n3 = len(l_data3)
-        if n3 % 2 == 0:
-            m1 = l_data3[n3//2]
-            m2 = l_data3[n3//2 - 1]
-            q3 = (m1 + m2)/2
-        else:
-            q3 = l_data3[n3//2]
+    def q3(items):
+        q3 = np.percentile(items, 75)
         return round(q3, 2)
 
-    def mid(data):
-        data2 = sorted(data, reverse=False)
-        n = len(data)
-        if n % 2 == 0:
-            m1 = data2[n//2]
-            m2 = data2[n//2 - 1]
-            median = (m1 + m2)/2
-        else:
-            median = data2[n//2]
+    def mid(items):
+        median = np.median(items)
         return round(median, 2)
 
-    maximum = lambda data : round(max(data), 2)
+    maximum = lambda items : round(max(items), 2)
 
-    minimum = lambda data : round(min(data), 2)
-    fns = {'max': maximum(data), 'median': mid(data), 'min': minimum(data), 'q1': q1(data), 'q3': q3(data)}
+    minimum = lambda items : round(min(items), 2)
+
+    fns = {'max': maximum(items), 'median': mid(items), 'min': minimum(items), 'q1': q1(items), 'q3': q3(items)}
+
     return fns
 
 def date_parser(items):
     """
-    function should take a list of strings as input.
-Each string in the input list is formatted as 'yyyy-mm-dd hh:mm:ss'.
-The function should return a list of strings where each element in the
-returned list contains only the date in the 'yyyy-mm-dd' format.
+    Takes in a list of strings as input and returns a list of strings
+    Args:
+        items (list): a list of strings with each string formatted
+                        as 'yyyy-mm-dd hh:mm:ss'
+
+    Returns:
+        list : a list of strings with each string formatted as 'yyyy-mm-dd'
     """
+
        just_dates = [i[0:10] for i in dates ]
     return just_dates
 
-
-
 def extract_municipality_hashtags(df):
-    import numpy as np
-    import pandas as pd
-"""
-    The function should take pandas as a dataframe.
+    """
+    Takes in a pandas dataframe.
     Extract municipality from a tweet using dictionaries.
     Extract hashtags from a tweet using dictionaries.
 
     Args:
         df (DataFrame): pandas data DataFrame
 
-
-
-    Return:
+    Returns:
         DataFrame: with information about municipality and hashtags from each tweet.
 
-"""
+    """
+    import numpy as np
+    import pandas as pd
+
     mun_dict = { '@CityofCTAlerts' : 'Cape Town',
             '@CityPowerJhb' : 'Johannesburg',
             '@eThekwiniM' : 'eThekwini' ,
@@ -131,20 +120,40 @@ def extract_municipality_hashtags(df):
 
     return extracted_municipality_hashtags
 
-
 def number_of_tweets_per_day(df):
+   """
+   The function takes a pandas dataframe as inpit and returns a new dataframe,
+   grouped by day, with the numbers of tweets for that day
 
-   """ The function takes a pandas dataframe as inpit
-        The function returns a new dataframe , grouped by day, with the numbers of tweets for that day
-        Get index of the new dataframe should be named "Date", and the column of the new dataframe should be 'tweets', corresponding to the date and number of 'Tweets, corresponding to the date and number of tweets, respectively.
-        The date and number be formated as yyyy-mm-dd, and should be a datetime object """
+        Args:
+            df (DataFrame): a twitter DataFrame
+
+        Returns:
+            DataFrame: with index named "Date" and the column of the new
+                        dataframe should be 'tweets', corresponding to the date and number
+                        of 'Tweets, corresponding to the date and number of tweets, respectively.
+                        The date and number be formated as yyyy-mm-dd
+
+        """
+    import numpy as np
+    import pandas as pd
     df1=df['Date'].str.split(expand = True)
     df['Date'] = df1[0]
     df=df.groupby('Date').count()
     return df
 
 def word_spliter(df):
+    """
+    Splits the sentences in a dataframe's column into a list of the separate words.
 
+    Args:
+        df (DataFrame): a twitter DataFrame
+
+    Returns:
+        DataFrame: The original twitter DataFrame with a columns "Tweets"
+    """
+    import numpy as np
+    import pandas as pd
 
     Split_tweets = [x.lower().split() for x in df['Tweets']]
     d = pd.DataFrame(np.array(Split_tweets), columns=['Split Tweets'])
@@ -152,8 +161,17 @@ def word_spliter(df):
 
     return df_split
 
-
 def stop_words_remover(df):
+    """
+    Removes English stop words from a tweet, tokenises the tweet and places in
+    them in a column named "Without Stop Words". The stopwords are defined in
+    the stop_words_dict variable given.
+    Args:
+        df (DataFrame): a twitter DataFrame
+
+    Returns:
+        DataFrame: The original twitter DataFrame with a columns "Without Stop Words"
+    """
     import numpy as np
     import pandas as pd
 
