@@ -159,6 +159,15 @@ def word_spliter(df):
 
 
 def stop_words_remover(df):
+    """
+    function removes english stop words from a tweet.with the Specifications
+    It should take a pandas dataframe as input.
+    Should tokenise the sentences according to the definition in function 6. Note that function 6 cannot be called within this function.
+    Should remove all stop words in the tokenised list. The stopwords are defined in the stop_words_dict variable defined at the top of this notebook.
+    The resulting tokenised list should be placed in a column named "Without Stop Words".
+    The function should modify the input dataframe it should also return the modified dataframe.
+
+    """
     import numpy as np
     import pandas as pd
 
