@@ -73,7 +73,7 @@ def date_parser(items):
         list : a list of strings with each string formatted as 'yyyy-mm-dd'
     """
 
-       just_dates = [i[0:10] for i in dates ]
+    just_dates = [i[0:10] for i in dates ]
     return just_dates
 
 def extract_municipality_hashtags(df):
