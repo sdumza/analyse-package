@@ -30,7 +30,7 @@ def dictionary_of_metrics(items):
                'std':round(stdv(items), 2), 'min':round(minimum(items), 2), 'max':round(maximum(items), 2)}
     return met_dic
 
-def five_num_summ(data):
+def five_num_summ(items):
     """
     Takes in a list of integers and returns a dictionary of the five number summary.
     The function returns numerical values rounded to two decimal places.
