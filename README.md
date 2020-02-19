@@ -3,6 +3,9 @@
 
 ```bash
 pip install git+https://github.com/kopano-m/analyse-package.git
+```
+## Update
+```bash
 pip install --upgrade git+https://github.com/kopano-m/analyse-package.git
 ```
 ## Usage
