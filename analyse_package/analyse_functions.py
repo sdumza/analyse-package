@@ -216,7 +216,7 @@ def stop_words_remover(df):
     k = [y.lower() for x,y in z]
     stop_words = tuple(stop_words_dict['stopwords'])
     no_swords_list = [list(filter(lambda x: x not in stop_words, k[i].split()))
-               for i in range(len(twitter_df.index.values))]
+               for i in range(len(df.index.values))]
     no_swords_df = pd.DataFrame(np.array(no_swords_list), columns=['Without Stop Words'])
     stop_words_remover_df = df.join(no_swords_df, lsuffix=['Date'], rsuffix=['Without Stop Words'])
     return stop_words_remover_df
