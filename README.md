@@ -1,6 +1,14 @@
 # Analyse Package
-## Installation
+Analyse Package is a Python module which deals with producing summary statistics
+specific to the ESKOM energy crisis. The anticipated use of the functions is
+to aid in the elimination of ESKOM's unreliable energy distribution in South Africa,
+by building a set of dashboards which will provide key insights about stabilizing
+energy generation and distribution.
 
+
+## Installation
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the
+Analyse Package.
 ```bash
 pip install git+https://github.com/kopano-m/analyse-package.git
 ```
@@ -23,8 +31,10 @@ af.stop_words_remover(DataFrame) # returns a modified DataFrame
 ```
 
 ## Contributing
-
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
 
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+## Important Notice to Supervisor
