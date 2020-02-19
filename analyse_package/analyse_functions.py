@@ -121,7 +121,7 @@ def extract_municipality_hashtags(df):
     return extracted_municipality_hashtags
 
 def number_of_tweets_per_day(df):
-   """
+    """
    The function takes a pandas dataframe as inpit and returns a new dataframe,
    grouped by day, with the numbers of tweets for that day
 
@@ -134,9 +134,9 @@ def number_of_tweets_per_day(df):
                         of 'Tweets, corresponding to the date and number of tweets, respectively.
                         The date and number be formated as yyyy-mm-dd
 
-    """
-import numpy as np
-import pandas as pd
+"""
+    import numpy as np
+    import pandas as pd
     df1=df['Date'].str.split(expand = True)
     df['Date'] = df1[0]
     df=df.groupby('Date').count()
