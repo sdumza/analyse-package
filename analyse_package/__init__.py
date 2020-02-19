@@ -1,1 +1,1 @@
-from . import analyse_package
+from . import analyse_functions
