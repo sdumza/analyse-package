@@ -175,6 +175,7 @@ def stop_words_remover(df):
     import numpy as np
     import pandas as pd
 
+    dates = df['Date'].to_list()
     date_list = [dates[i].split()[0] for i in range(len(dates))]
     tweets_list = list(df['Tweets'])
     z = list(zip(date_list,tweets_list))
