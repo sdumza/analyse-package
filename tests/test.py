@@ -116,13 +116,13 @@ def number_of_tweets_per_day():
        '2019-11-25', '2019-11-26', '2019-11-27', '2019-11-28', '2019-11-29'],
       dtype='object', name='Date'), 'correct'
 
-def word_spliter():
+def word_splitter():
     """
     Testing function 6
     """
     Split_tweets = [x.lower().split() for x in df['Tweets']]
     d = pd.DataFrame(np.array(Split_tweets), columns=['Split Tweets'])
-    assert word_spliter(twitter_df)['Split Tweets'] == d, 'correct'
+    assert word_splitter(twitter_df)['Split Tweets'] == d, 'correct'
 
 def stop_words_remover():
     """

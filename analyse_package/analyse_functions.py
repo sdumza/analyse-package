@@ -73,7 +73,7 @@ def date_parser(items):
         list : a list of strings with each string formatted as 'yyyy-mm-dd'
     """
 
-       just_dates = [i[0:10] for i in dates ]
+    just_dates = [i[0:10] for i in items]
     return just_dates
 
 def extract_municipality_hashtags(df):
@@ -121,7 +121,7 @@ def extract_municipality_hashtags(df):
     return extracted_municipality_hashtags
 
 def number_of_tweets_per_day(df):
-   """
+    """
    The function takes a pandas dataframe as inpit and returns a new dataframe,
    grouped by day, with the numbers of tweets for that day
 
@@ -134,7 +134,7 @@ def number_of_tweets_per_day(df):
                         of 'Tweets, corresponding to the date and number of tweets, respectively.
                         The date and number be formated as yyyy-mm-dd
 
-        """
+"""
     import numpy as np
     import pandas as pd
     df1=df['Date'].str.split(expand = True)
@@ -142,7 +142,7 @@ def number_of_tweets_per_day(df):
     df=df.groupby('Date').count()
     return df
 
-def word_spliter(df):
+def word_splitter(df):
     """
     Splits the sentences in a dataframe's column into a list of the separate words.
 
