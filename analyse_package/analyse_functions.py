@@ -134,7 +134,7 @@ def number_of_tweets_per_day(df):
                         of 'Tweets, corresponding to the date and number of tweets, respectively.
                         The date and number be formated as yyyy-mm-dd
 
-        """
+    """
     import numpy as np
     import pandas as pd
     df1=df['Date'].str.split(expand = True)
