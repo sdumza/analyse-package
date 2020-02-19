@@ -135,8 +135,8 @@ def number_of_tweets_per_day(df):
                         The date and number be formated as yyyy-mm-dd
 
     """
-    import numpy as np
-    import pandas as pd
+import numpy as np
+import pandas as pd
     df1=df['Date'].str.split(expand = True)
     df['Date'] = df1[0]
     df=df.groupby('Date').count()
